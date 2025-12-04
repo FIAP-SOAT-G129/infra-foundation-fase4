@@ -36,9 +36,10 @@ infra-foundation-fase4/
 
 ## ⚙️ Pré-requisitos
 
-- [Terraform >= 1.5](https://developer.hashicorp.com/terraform/downloads)
+- [Terraform >= 1.6](https://developer.hashicorp.com/terraform/downloads)
 - AWS CLI configurado
 - Permissões para criar recursos de rede (VPC, Subnets, IGW, NAT, etc)
+- Permissões para criar repositórios ECR
 - Backend S3 já configurado para armazenar o estado remoto
 
 ---
@@ -97,12 +98,11 @@ Após aplicar, os principais outputs incluem:
 
 O projeto utiliza pipelines CI/CD no GitHub Actions para automação, validação e aplicação da infraestrutura. Os principais workflows estão em `.github/workflows/`:
 
-- **fmt-validate.yml**: Executa `terraform fmt` e `terraform validate` em PRs e pushes.
-- **plan.yml**: Gera o plano de execução (`terraform plan`) para revisão.
-- **apply.yml**: Aplica as alterações aprovadas (`terraform apply`).
-- **destroy.yml**: Automatiza a destruição dos recursos.
-- **destroy-terraform.yml**: Orquestra a destruição controlada via Terraform.
-- **terraform.yml**: Workflow principal de CI/CD.
+- **fmt-validate.yml**: Executa `terraform fmt` e `terraform validate` em todos os PRs e pushes, garantindo que o código esteja formatado e válido antes de ser aplicado.
+
+- **apply.yml**: Aplica as alterações aprovadas na infraestrutura (`terraform apply`) após revisão e aprovação do plano.
+
+- **destroy.yml**: Automatiza a destruição dos recursos provisionados, geralmente utilizado para ambientes temporários ou de testes.
 
 ### Benefícios da automação
 
