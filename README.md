@@ -89,6 +89,7 @@ Após aplicar, os principais outputs incluem:
 
 - **vpc_id** → ID da VPC criada
 - **vpc_cidr_block** → CIDR da VPC
+- **nat_public_ip** → IP público do NAT Gateway
 - **public_subnet_ids** → IDs das subnets públicas
 - **private_subnet_ids** → IDs das subnets privadas
 
