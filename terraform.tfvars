@@ -18,7 +18,7 @@ subnets = {
 ecr_repositories = {
   catalog  = "fastfood-catalog-ms"
   payments = "fastfood-payments-ms"
-  order    = "fastfood-order-ms"
+  order    = "fastfood-orders-ms"
 }
 
 tags = {
